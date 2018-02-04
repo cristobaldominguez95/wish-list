@@ -9,13 +9,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PendingPage } from '../pages/pending/pending';
 import { FinishPage } from '../pages/finish/finish';
+import { WishListService } from './services/wish-list.service';
+import { AddPage } from '../pages/add/add';
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
     PendingPage,
-    FinishPage
+    FinishPage,
+    AddPage
   ],
   imports: [
     BrowserModule,
@@ -26,12 +29,14 @@ import { FinishPage } from '../pages/finish/finish';
     MyApp,
     TabsPage,
     PendingPage,
-    FinishPage
+    FinishPage,
+    AddPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    WishListService
   ]
 })
 export class AppModule {}
