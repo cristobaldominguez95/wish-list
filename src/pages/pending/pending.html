@@ -1,9 +1,31 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Pending</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>Pending</h1>
+  <ion-card *ngFor="let item of lists">  
+    <ion-item>
+      BOTON!!!
+    </ion-item>
+    <h2>{{ item.nombre }}</h2>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+        Tetris
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+        Tetris
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+        Tetris
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-fab right bottom (click)="goToAddPage()">
+    <button ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
