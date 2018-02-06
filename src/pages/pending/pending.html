@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let list of lists">  
+  <ion-card *ngFor="let list of lists; let index = index" (click)="seeDetails(index)">
     <ion-item color="dark">
       {{ list.name }}
       <ion-note item-right>

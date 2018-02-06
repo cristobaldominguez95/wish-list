@@ -11,6 +11,7 @@ import { PendingPage } from '../pages/pending/pending';
 import { FinishPage } from '../pages/finish/finish';
 import { WishListService } from './services/wish-list.service';
 import { AddPage } from '../pages/add/add';
+import { DetailPage } from '../pages/detail/detail';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddPage } from '../pages/add/add';
     TabsPage,
     PendingPage,
     FinishPage,
-    AddPage
+    AddPage,
+    DetailPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { AddPage } from '../pages/add/add';
     TabsPage,
     PendingPage,
     FinishPage,
-    AddPage
+    AddPage,
+    DetailPage
   ],
   providers: [
     StatusBar,
