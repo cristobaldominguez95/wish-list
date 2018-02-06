@@ -5,14 +5,24 @@ import { List } from '../classes/lists';
 @Injectable()
 export class WishListService {
 
-  constructor() {
-  }
+  constructor() { }
   
   getLists(): List[] {
-    let list1 = new List('Compra del supermercado');
-    let list2 = new List('Juegos que deseo');
-    let list3 = new List('Cosas de la universidad');
-    return [list1, list2, list3];    
+    let jsonList = localStorage.getItem('lists');
+    return JSON.parse(jsonList);
+  }
+
+  addList(list: List): void {
+    if (localStorage.getItem('lists') === null) {
+      let lists: List[] = [];
+      lists.push(list);
+      localStorage.setItem('lists', JSON.stringify(lists));
+    } else {
+      let jsonLists = localStorage.getItem('lists');
+      let lists = JSON.parse(jsonLists);
+      lists.push(list);
+      localStorage.setItem('lists', JSON.stringify(lists));
+    }
   }
 
 }
