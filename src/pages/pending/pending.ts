@@ -12,10 +12,9 @@ export class PendingPage {
 
   lists: List[];
 
-  constructor(public navCtrl: NavController, private wishListService: WishListService) {
-  }
+  constructor(public navCtrl: NavController, private wishListService: WishListService) { }
   
-  ionViewDidLoad(): void {
+  ionViewDidEnter(): void {
     this.lists = this.wishListService.getLists();
   }
 

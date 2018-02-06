@@ -7,21 +7,13 @@
 <ion-content padding>
   <ion-card *ngFor="let item of lists">  
     <ion-item>
-      BOTON!!!
+      {{ item.name }}
     </ion-item>
     <h2>{{ item.nombre }}</h2>
     <ion-list>
-      <ion-item>
+      <ion-item *ngFor="let listItem of item.items">
         <ion-icon name="arrow-dropright-circle"></ion-icon>
-        Tetris
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright-circle"></ion-icon>
-        Tetris
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright-circle"></ion-icon>
-        Tetris
+        {{ listItem.name }}
       </ion-item>
     </ion-list>
   </ion-card>
