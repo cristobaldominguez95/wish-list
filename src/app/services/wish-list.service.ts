@@ -25,4 +25,8 @@ export class WishListService {
     }
   }
 
+  getList(index: number): List {
+    return this.getLists()[index];
+  }
+
 }
