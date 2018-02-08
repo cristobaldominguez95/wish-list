@@ -26,14 +26,17 @@
   </ion-card>
 
   <div *ngIf="items.length">
-    <h3>Added items</h3>
     <ion-list>
-      <div ion-item *ngFor="let item of items; let index = index">
-        {{ item.name }}
-        <button ion-button icon-only outline color="danger" (click)="removeItem(index)">
+      <ion-list-header>
+        Added items
+      </ion-list-header>
+      <ion-item *ngFor="let item of items; let index = index">
+        <span item-start>{{ item.name }}</span>
+        <button ion-button icon-only outline item-end color="danger" (click)="removeItem(index)">
           <ion-icon name="close"></ion-icon>
+          Remove
         </button>
-      </div>
+      </ion-item>
     </ion-list>
     <button ion-button block (click)="addList()">Add list</button>
   </div>

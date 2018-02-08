@@ -5,5 +5,27 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Detail page</h3>
+  <ion-card>
+    <ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>List name</ion-label>
+          <ion-input type="text" [(ngModel)]="list.name"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of list.items" (click)="changeStatus(item)">
+          <ion-icon *ngIf="!item.finish; else elseBlock" name="square-outline"></ion-icon>
+          <ng-template #elseBlock>
+            <ion-icon name="checkbox-outline"></ion-icon>
+          </ng-template>
+          <span [class.strikethrough]="item.finish">{{ item.name }}</span>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <button ion-button block color="danger" (click)="removeList()">Remove list</button>      
 </ion-content>
