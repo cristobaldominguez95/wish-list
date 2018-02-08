@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ListItem } from '../classes/list-item';
 import { List } from '../classes/lists';
 
 @Injectable()
@@ -27,6 +26,21 @@ export class WishListService {
 
   getList(index: number): List {
     return this.getLists()[index];
+  }
+
+  updateList(index: number, newList: List): void {
+    if (index < 0) {
+      return;
+    }
+    let lists: List[] = this.getLists();
+    lists[index] = newList;
+    localStorage.setItem('lists', JSON.stringify(lists));
+  }
+
+  removeList(index: number): void {
+    let lists: List[] = this.getLists();
+    lists.splice(index, 1);
+    localStorage.setItem('lists', JSON.stringify(lists));
   }
 
 }
