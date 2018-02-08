@@ -43,4 +43,17 @@ export class WishListService {
     localStorage.setItem('lists', JSON.stringify(lists));
   }
 
+  isFinished(index: number): boolean {
+    let list: List = this.getLists()[index];
+    let isFinished = true;
+    for (let item of list.items) {
+      if (!item.finish) {
+        isFinished = false;
+        break;
+      }
+    }
+    console.log(isFinished);
+    return isFinished;
+  }
+
 }

@@ -11,4 +11,13 @@ export class List {
     this.finish = false;
   }
 
+  isFinished(): boolean {
+    for (let item of this.items) {
+      if (!item.finish) {
+        return false;
+      }
+    }
+    return true;
+  }
+
 }
