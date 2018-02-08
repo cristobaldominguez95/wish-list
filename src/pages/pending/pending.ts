@@ -16,7 +16,7 @@ export class PendingPage {
   constructor(public navCtrl: NavController, private wishListService: WishListService) { }
   
   ionViewDidEnter(): void {
-    this.lists = this.wishListService.getLists();
+    this.lists = this.wishListService.getPendingLists();
   }
 
   goToAddPage(): void {

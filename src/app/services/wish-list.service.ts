@@ -11,6 +11,22 @@ export class WishListService {
     return JSON.parse(jsonList);
   }
 
+  getPendingLists(): List[] {
+    let lists: List[] = this.getLists();
+    if (lists != null) {
+      return lists.filter(list => !list.finish);
+    }
+    return [];
+  }
+
+  getFinishedLists(): List[] {
+    let lists: List[] = this.getLists();
+    if (lists != null) {
+      return lists.filter(list => list.finish);
+    }
+    return [];
+  }
+
   addList(list: List): void {
     if (localStorage.getItem('lists') === null) {
       let lists: List[] = [];
@@ -25,20 +41,33 @@ export class WishListService {
   }
 
   getList(index: number): List {
-    return this.getLists()[index];
+    let isFinished = this.getLists()[index].finish;
+    return isFinished ? this.getFinishedLists()[index] : this.getPendingLists()[index];
   }
 
   updateList(index: number, newList: List): void {
     if (index < 0) {
       return;
     }
-    let lists: List[] = this.getLists();
+    let isFinished = this.getLists()[index].finish;
+    let lists: List[];
+    if (isFinished) {
+      lists = this.getFinishedLists();
+    } else {
+      lists = this.getPendingLists();
+    }
     lists[index] = newList;
     localStorage.setItem('lists', JSON.stringify(lists));
   }
 
   removeList(index: number): void {
-    let lists: List[] = this.getLists();
+    let isFinished = this.getLists()[index].finish;
+    let lists: List[];
+    if (isFinished) {
+      lists = this.getFinishedLists();
+    } else {
+      lists = this.getPendingLists();
+    }
     lists.splice(index, 1);
     localStorage.setItem('lists', JSON.stringify(lists));
   }

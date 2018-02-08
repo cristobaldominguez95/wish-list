@@ -1,9 +1,32 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Finish</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <h1>Finish</h1>
-</ion-content>
+    <ion-navbar color="primary">
+      <ion-title>Pending lists</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-card *ngFor="let list of lists; let index = index" (click)="seeDetails(index)">
+      <ion-item color="dark">
+        {{ list.name }}
+        <ion-note item-right>
+          {{ list.items.length }} items
+        </ion-note>
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let item of list.items | slice:0:2">
+          <ion-icon *ngIf="!item.finish; else elseBlock" name="square-outline"></ion-icon>
+          <ng-template #elseBlock>
+            <ion-icon name="checkbox-outline"></ion-icon>
+          </ng-template>
+          {{ item.name }}
+        </ion-item>
+        <ion-item *ngIf="list.items.length > 2" text-center>
+          <ion-icon name="arrow-dropdown" color="primary"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-fab right bottom (click)="goToAddPage()">
+      <button ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+  </ion-content>
+  
